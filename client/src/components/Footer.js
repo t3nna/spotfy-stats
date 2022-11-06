@@ -1,6 +1,7 @@
-import React from "react";
+import React, {useEffect} from "react";
 
 export default function Footer(){
+
     return(
         <footer className={'footer'}>
             <div className="social">
