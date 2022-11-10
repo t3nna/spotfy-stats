@@ -1,0 +1,32 @@
+@use '../base/typo';
+@use '../abstracts/variables';
+
+.item-description {
+
+
+  img {
+  border-radius: variables.$img-border-radius;
+  }
+
+  hr {
+    height: 0;
+    color: orange;
+    border-width: 0;
+    border-top-width: 1px;
+    border-color: rgb(161 161 170/ .5);
+
+
+  }
+}
+
+.divider + p{
+  text-indent: 1.5rem;
+}
+
+
+.item-description__title{
+  p{
+    margin-top: 0.75rem;
+  }
+}
+

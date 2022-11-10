@@ -4,15 +4,20 @@ export default function Footer(){
 
     return(
         <footer className={'footer'}>
-            <div className="social">
-                <h3>Follow me on</h3>
-                <p>Instagram</p>
-                <p>Twitter</p>
-                <p>Youtube</p>
-            </div>
-            <div className="copyright">
-                <p>© 2022 t3nna</p>
-            </div>
+
+
+            <section>
+                <div className="container">
+                    <div className="social">
+
+                    </div>
+                    <div className="copyright">
+                        <p>© 2022 t3nna</p>
+                    </div>
+
+                </div>
+            </section>
+
         </footer>
     )
 }

@@ -1,0 +1,22 @@
+@use "../abstracts/variables";
+
+.path-navigation{
+  display: flex;
+  align-items: center;
+  //gap: 0.125rem;
+  margin-block: 1rem;
+}
+
+.path-navigation__index{
+  color: inherit;
+  text-decoration: underline;
+}
+
+.path-navigation__icon{
+  color: variables.$clr-accent-400;
+  width: 20px;
+}
+
+.path-navigation__dynamic{
+  color: variables.$clr-primary-600;
+}

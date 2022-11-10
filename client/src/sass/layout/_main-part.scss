@@ -1,0 +1,38 @@
+@use '../base/typo';
+@use '../abstracts/variables';
+
+.intro-img{
+  background-image: url("http://localhost:3000/images/img.png");
+  background-position: center;
+  background-size: cover ;
+  padding: 4.5rem 0;
+  color: white;
+}
+
+.login{
+  display: flex;
+  min-width: 100%;
+  gap: 5rem;
+  flex-direction: column;
+  //text-align: center;
+
+  a{
+    align-self: center;
+  }
+
+}
+
+
+
+// Copyright
+
+.copyright{
+  padding: 1.5rem 0 1rem;
+  text-align: center;
+  color: gray;
+}
+
+
+
+
+

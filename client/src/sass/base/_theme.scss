@@ -1,0 +1,99 @@
+@use '../abstracts/variables';
+
+.light {
+  .theme-wrapper {
+
+    background-color: variables.$clr-bg-primary-light;
+    color: variables.$clr-font-primary-light;
+
+  }
+
+  .theme-border-img {
+    img {
+
+
+
+      border: variables.$border-light;
+
+
+    }
+  }
+
+  .theme-border {
+    border: variables.$border-light;
+
+
+
+  }
+
+  .primary-navigation {
+    background-color: variables.$clr-bg-primary-light;
+
+
+  }
+
+  .theme-wrapper-color {
+
+    color: variables.$clr-font-primary-light;
+  }
+
+  .theme-toggle {
+    background-color: variables.$clr-primary-500;
+  }
+
+  .theme-active {
+    background-color: #ffffff;
+  }
+
+}
+
+.dark {
+  .theme-wrapper {
+
+    background-color: variables.$clr-bg-primary-dark;
+    color: variables.$clr-font-primary-dark;
+
+
+  }
+
+  .theme-wrapper-color {
+
+    color: variables.$clr-font-primary-dark;
+  }
+
+  .primary-navigation {
+    background-color: variables.$clr-bg-accent-dark;
+  }
+
+  .theme-border-img {
+    img {
+
+      border: variables.$border-dark;
+    }
+  }
+
+  .theme-border {
+    border: variables.$border-dark;
+
+  }
+
+  .theme-toggle {
+    background-color: variables.$clr-accent-400;
+
+    svg {
+
+      color: variables.$clr-accent-300;
+    }
+  }
+
+  .theme-active {
+    background-color: #ffffff;
+
+    svg {
+      color: variables.$clr-bg-primary-dark;
+
+    }
+  }
+}
+
+

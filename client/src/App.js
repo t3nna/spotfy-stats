@@ -1,19 +1,15 @@
-import './styles/index.scss'
-import Login from "./components/Login";
+import Main from "./components/Main";
 import Footer from "./components/Footer";
-import Account from "./components/Account";
+
+import './sass/main.scss';
 
 
-const code = new URLSearchParams(window.location.search).get('code')
 function App() {
     return (
-        <main className={'main'}>
-            {
-                code? <Account code={code}/> :
-
-                <Login/>}
+        <>
+            <Main/>
             <Footer/>
-        </main>
+        </>
     );
 }
 
