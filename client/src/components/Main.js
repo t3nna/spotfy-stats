@@ -9,7 +9,7 @@ const AUTH_URL =
 
 export default function Main() {
 
-    // const code = new URLSearchParams(window.location.search).get('code')
+    const code = new URLSearchParams(window.location.search).get('code')
 
 
     return (
@@ -26,12 +26,11 @@ export default function Main() {
 
 
 
-            {/*{*/}
-            {/*    code ? <Account code={code}/> :*/}
+            {
+                code ? <Account code={code}/> :
 
-            {/*        <LoginButton/>*/}
-            {/*}*/}
-            <Account />
+                    <LoginButton/>
+            }
 
 
         </main>

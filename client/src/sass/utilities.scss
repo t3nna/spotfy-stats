@@ -133,12 +133,12 @@
 
 .link-accent{
   color: inherit;
-  text-decoration-color: variables.$clr-primary-600;
+  text-decoration-color: variables.$clr-accent-400;
   text-decoration-thickness: 2px;
   text-underline-offset: 4px;
   font-weight: typo.$fw-medium;
 
   &:hover, &:focus{
-    color: variables.$clr-primary-600;
+    color: variables.$clr-accent-400;
   }
 }
