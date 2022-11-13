@@ -1,17 +1,16 @@
 import React from 'react';
 
-function AccentMediaItem(props) {
+function AccentMediaItem({item}) {
     return (
         <li>
-            <img src="https://i.scdn.co/image/ab67616d0000b2739efda673310de265a2c1cf1f" alt=""/>
+            <img src={item.album.images[0].url} alt=""/>
             <div className="media-desc">
 
                 <h2 className="media-desc__name | fs-400 fw-bold">
-                    <span className="media-desc__place">#1 </span>
-                    Freaks
+                    <span className="media-desc__place">#{item.place} </span>
+                    {item?.name}
                 </h2>
-                <h3 className="media-desc__author | fs-300 fw-bold">Surf Curse Lorem ipsum dolor
-                    sit.</h3>
+                <h3 className="media-desc__author | fs-300 fw-bold">{item?.artists[0].name}</h3>
             </div>
         </li>
     );
