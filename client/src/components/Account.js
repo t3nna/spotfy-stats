@@ -4,6 +4,10 @@ import SpotifyWebApi from "spotify-web-api-node";
 import axios from "axios";
 import formatData from "./tools/formatData";
 import TrackList from "./TrackList";
+import {useDispatch, useSelector} from "react-redux";
+import {fetchTracks} from "./features/tracksSlice";
+import {setAccessToken} from "./features/paramSlice";
+import {fetchArtists} from "./features/artistsSlice";
 
 const spotifyApi = new SpotifyWebApi({
     clientId: '2b08d7b2b91a475da8192bc5cbb439b8'
@@ -15,12 +19,39 @@ export default function Account({code}) {
     const [selectType, setSelectType] = useState('tracks');
     const [selectTime, setSelectTime] = useState('long_term');
 
+    const dispatch = useDispatch()
+    const tracksStatus = useSelector(state => state.tracks.status)
+    const artistsStatus = useSelector(state => state.artists.status)
+    const timeRange = useSelector(state => state.param.timeRange)
+
     useEffect(() => {
         if (!accessToken) return
         spotifyApi.setAccessToken(accessToken)
+        dispatch(setAccessToken(accessToken))
 
 
     }, [accessToken]);
+
+    const reduxAccessToken = useSelector(state => state.param.accessToken)
+
+    useEffect(() => {
+        if (!reduxAccessToken) return
+        if (tracksStatus === 'idle'){
+            dispatch(fetchTracks())
+            console.log('effect')
+        }
+
+    }, [ reduxAccessToken, tracksStatus, timeRange]);
+    // fetch Artists
+    useEffect(() => {
+        if (!reduxAccessToken) return
+        if (artistsStatus === 'idle'){
+            dispatch(fetchArtists())
+            console.log('effect')
+        }
+
+    }, [ reduxAccessToken, artistsStatus, timeRange]);
+
 
     useEffect(() => {
         setDataStatus('loading')

@@ -28,8 +28,12 @@ function TrackList({data, selectType, setSelectType, selectTime, setSelectTime})
             </section>
             <section>
                 <div className="container primary-media-list">
+
                     {
-                        <FirstPlaceMediaItem item={data.topOne} type={selectType}/>
+                        data.topOne.map(item => (
+                            <FirstPlaceMediaItem item={item} type={selectType}/>
+
+                        ))
                         //
                     }
                     <ul className="featured-media">
