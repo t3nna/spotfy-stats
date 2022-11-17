@@ -16,8 +16,7 @@ export default function Account({code}) {
     const accessToken = useAuth(code)
     const [dataStatus, setDataStatus] = useState('loading');
     const [data, setData] = useState([]);
-    const [selectType, setSelectType] = useState('tracks');
-    const [selectTime, setSelectTime] = useState('long_term');
+
 
     const dispatch = useDispatch()
     const tracksStatus = useSelector(state => state.tracks.status)
@@ -53,44 +52,43 @@ export default function Account({code}) {
     }, [ reduxAccessToken, artistsStatus, timeRange]);
 
 
-    useEffect(() => {
-        setDataStatus('loading')
-        if (!accessToken) return
+    // useEffect(() => {
+    //     setDataStatus('loading')
+    //     if (!accessToken) return
+    //
+    //
+    //     axios.get(`https://api.spotify.com/v1/me/top/${selectType}?limit=50&time_range=${selectTime}`, {
+    //         headers: {
+    //             Authorization: 'Bearer ' + accessToken,
+    //             "Content-Type": 'application/json',
+    //             "Host": "api.spotify.com"
+    //         }
+    //     })
+    //         .then(res => {
+    //
+    //             let formated = formatData(res.data.items)
+    //
+    //             setData(formated)
+    //             setDataStatus('succeeded')
+    //
+    //         })
+    //         .catch(err => {
+    //             console.log(err)
+    //         })
+    //
+    //
+    // }, [accessToken, selectTime, selectType]);
 
-
-        axios.get(`https://api.spotify.com/v1/me/top/${selectType}?limit=50&time_range=${selectTime}`, {
-            headers: {
-                Authorization: 'Bearer ' + accessToken,
-                "Content-Type": 'application/json',
-                "Host": "api.spotify.com"
-            }
-        })
-            .then(res => {
-
-                let formated = formatData(res.data.items)
-
-                setData(formated)
-                setDataStatus('succeeded')
-
-            })
-            .catch(err => {
-                console.log(err)
-            })
-
-
-    }, [accessToken, selectTime, selectType]);
-
-    console.log(data)
+    // console.log(data)
 
 
     return (
 
         <>
             {
-                dataStatus === 'succeeded' ? (
+                tracksStatus === 'succeeded' ? (
 
-                        <TrackList data={data} selectType={selectType} setSelectType={setSelectType} selectTime={selectTime}
-                                   setSelectTime={setSelectTime}/>
+                        <TrackList/>
                     ) :
                     <h1>
                         {dataStatus}

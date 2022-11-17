@@ -16,7 +16,7 @@ const tracksSlice = createSlice({
                 state.accessToken = action.payload
             }
         },
-        startFetching:{
+        startFetchingTracks:{
             reducer(state, action){
                 state.status = 'idle'
             }
@@ -43,7 +43,7 @@ const tracksSlice = createSlice({
 
 },)
 
-export const {startFetching, setTimeRange} = tracksSlice.actions
+export const {startFetchingTracks, setTimeRange} = tracksSlice.actions
 
 export default tracksSlice.reducer
 

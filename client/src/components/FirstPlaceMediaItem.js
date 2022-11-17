@@ -20,7 +20,7 @@ function FirstPlaceMediaItem({item, type}) {
                     </>
                     :
                     <>
-                        {/*<img src={item.images[0].url} alt=""/>*/}
+                        <img src={item.images[0].url} alt=""/>
                         <div className="media-desc-primary">
                             <p className="fs-700 fw-medium | media-desc-primary__place">#{item.place}</p>
                             <div>

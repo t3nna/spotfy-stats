@@ -15,6 +15,11 @@ const artistsSlice = createSlice({
             reducer(state, action){
                 state.accessToken = action.payload
             }
+        },
+        startFetchingArtists:{
+            reducer(state, action){
+                state.status = 'idle'
+            }
         }
 
     },
@@ -37,7 +42,7 @@ const artistsSlice = createSlice({
 
 },)
 
-export const {setAccessTokenArtists} = artistsSlice.actions
+export const {startFetchingArtists} = artistsSlice.actions
 
 export default artistsSlice.reducer
 

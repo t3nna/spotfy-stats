@@ -18,11 +18,11 @@ function SelectButton({select, setSelect, options}) {
     useClickOutside([buttonRef, openSelectRef], outsideHandler)
 
 const dispatch = useDispatch()
-    const handleClick = function(item){
-        setSelect(item)
-        dispatch(setTimeRange(item))
-        dispatch(startFetching())
-    }
+    // const handleClick = function(item){
+    //     setSelect(item)
+    //     dispatch(setTimeRange(item))
+    //     dispatch(startFetching())
+    // }
 
     return (
         <div className="select-container">
@@ -36,7 +36,7 @@ const dispatch = useDispatch()
                 className={selectOpen ? `select-options open`: `select-options`}>
                 {
                     options.map((item, index) => (
-                        <p className={'fw-medium fs-500'} key={index} onClick={()=>handleClick(item)}>{item}</p>
+                        <p className={'fw-medium fs-500'} key={index} onClick={()=>setSelect(item)}>{item}</p>
                     ))
                 }
             </div>

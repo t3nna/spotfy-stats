@@ -1,11 +1,57 @@
-import React, {useState} from 'react';
+import React, {useEffect, useState} from 'react';
 import SelectButton from "./SelectButton";
 import FirstPlaceMediaItem from "./FirstPlaceMediaItem";
 import AccentMediaItem from "./AccentMediaItem";
 import withData from "./hoc/withData";
 import FeaturedMediaItem from "./FeaturedMediaItem";
+import {useDispatch, useSelector} from "react-redux";
+import {setTimeRange, setTypeArtists, setTypeTracks} from "./features/paramSlice";
+import { startFetchingTracks} from "./features/tracksSlice";
+import {startFetchingArtists} from "./features/artistsSlice";
 
-function TrackList({data, selectType, setSelectType, selectTime, setSelectTime}) {
+function TrackList() {
+    let tracks = useSelector(state => state.tracks.data)
+    let artists = useSelector(state => state.artists.data)
+    let data
+
+
+    const selectTypeGlobal = useSelector(state => state.param.type)
+
+    const [selectType, setSelectType] = useState(selectTypeGlobal);
+
+    if (selectType === 'tracks'){
+        data=tracks
+    }    else {
+        data=artists
+    }
+
+
+    const dispatch = useDispatch()
+
+    const selectTimeGlobal = useSelector(state => state.param.timeRange)
+    const [selectTime, setSelectTime] = useState(selectTimeGlobal);
+
+
+
+
+
+    const handleRequest = function(item){
+        dispatch(startFetchingTracks())
+        dispatch(startFetchingArtists())
+        dispatch(setTimeRange(item))
+        setSelectTime(item)
+    }
+
+    const handleTypeChange = function(item){
+        setSelectType(item)
+        if (item === 'tracks'){
+            dispatch(setTypeTracks())
+        }
+        if(item === 'artists'){
+            dispatch(setTypeArtists())
+        }
+    }
+
 
 
     return (
@@ -14,11 +60,11 @@ function TrackList({data, selectType, setSelectType, selectTime, setSelectTime})
                 <div className="container flow spotify-top-header">
                     <h1 className={'fs-primary-heading fw-bold'}>My Spotify Top 50</h1>
                     <div className="parameters | fs-550 fw-medium">
-                        <SelectButton select={selectType} setSelect={setSelectType} options={['artists', 'tracks']}/>
+                        <SelectButton select={selectType} setSelect={handleTypeChange} options={['artists', 'tracks']}/>
 
                         of the past
 
-                        <SelectButton select={selectTime} setSelect={setSelectTime}
+                        <SelectButton select={selectTime} setSelect={handleRequest}
                                       options={['long_term', 'medium_term', 'short_term']}/>
 
 
@@ -34,14 +80,13 @@ function TrackList({data, selectType, setSelectType, selectTime, setSelectTime})
                             <FirstPlaceMediaItem item={item} type={selectType}/>
 
                         ))
-                        //
+
                     }
                     <ul className="featured-media">
                         {
-                            data &&
                             data.featured.map(item =>
 
-                                <FeaturedMediaItem item={item}/>
+                                <FeaturedMediaItem item={item} type={selectType}/>
                             )
                         }
 
@@ -56,23 +101,9 @@ function TrackList({data, selectType, setSelectType, selectTime, setSelectTime})
                         {
                             data.tracks.map(item =>
 
-                                <AccentMediaItem item={item}/>
+                                <AccentMediaItem item={item} type={selectType}/>
                             )
                         }
-
-
-                        <li>
-                            <img src="https://i.scdn.co/image/ab67616d0000b2739efda673310de265a2c1cf1f" alt=""/>
-                            <div className="media-desc">
-
-                                <h2 className="media-desc__name | fs-400 fw-bold">
-                                    <span className="media-desc__place">#1 </span>
-                                    Freaks
-                                </h2>
-                                <h3 className="media-desc__author | fs-300 fw-bold">Surf Curse Lorem ipsum dolor
-                                    sit.</h3>
-                            </div>
-                        </li>
 
 
                     </ul>
@@ -82,6 +113,5 @@ function TrackList({data, selectType, setSelectType, selectTime, setSelectTime})
     );
 }
 
-const TrackListWithData = withData()(TrackList)
 
 export default TrackList;
