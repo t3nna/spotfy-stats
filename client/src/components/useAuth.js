@@ -11,7 +11,8 @@ export default function useAuth(code) {
 
     useEffect(() => {
         axios
-            .post("http://localhost:3001/login", {
+            // .post("http://localhost:3001/login", {
+            .post("https://spotify-backend-g0qc.onrender.com/login", {
                 code: code,
             })
             .then(res => {
@@ -36,7 +37,7 @@ export default function useAuth(code) {
 
 
             axios
-                .post("http://localhost:3001/refresh", {
+                .post("https://spotify-backend-g0qc.onrender.com/refresh", {
                     refreshToken
                 })
                 .then(res => {
