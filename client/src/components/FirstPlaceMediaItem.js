@@ -10,10 +10,10 @@ function FirstPlaceMediaItem({item, type}) {
                         <img src={item.album.images[0].url} alt=""/>
                         <div className="media-desc-primary">
                             <p className="fs-700 fw-medium | media-desc-primary__place">#{item.place}</p>
-                            <div>
+                            <div className={'media-desc'}>
 
-                                <h2 className="fs-secondary-heading fw-bold | media-desc-primary__name">{item.name}</h2>
-                                <h3 className="fs-third-heading fw-bold | media-desc-primary__author ">{item.artists[0].name}</h3>
+                                <a href={item.external_urls.spotify} className="fs-secondary-heading fw-bold | media-desc-primary__name">{item.name}</a>
+                                <a href={item.artists[0].external_urls.spotify} className="fs-third-heading fw-bold | media-desc-primary__author ">{item.artists[0].name}</a>
                             </div>
 
                         </div>

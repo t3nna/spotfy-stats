@@ -75,3 +75,24 @@
 }
 
 
+.spotify-logo-guideline{
+  margin-top: 1.5rem;
+
+}
+
+.spotify-icon{
+  display: flex;
+  //margin-bottom: 18px;
+  //padding: 0 1.5rem;
+
+
+  svg {
+    height: 40px;
+    max-width: 131px;
+    width: 100%;
+
+    color: white;
+  }
+}
+
+
